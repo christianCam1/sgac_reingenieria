@@ -1,6 +1,10 @@
-var UsuariosPorTimestamp = [];
+    var UsuariosPorTimestamp = [];
 
     function busca_user() {
+
+
+
+
       var nameType = $.fn.dataTable.absoluteOrder({
         value: 'Sin dato', position: 'bottom'
       });
@@ -11,6 +15,7 @@ var UsuariosPorTimestamp = [];
         pagingType: "full_numbers",
         paging: true, //Muestra la paginacion y el combobox
         bFilter: true,//Muestra oculta filtro
+        responsive: true,
         info: true,
         columnDefs: [
           { "targets": [7,9], "visible": false },
@@ -80,6 +85,10 @@ var UsuariosPorTimestamp = [];
           })
           .join('');
       }
+
+
+
+
 
       var db = firebase.database();
       var ref = db.ref("purchaseHistory");
@@ -205,8 +214,8 @@ var UsuariosPorTimestamp = [];
               ultimo_paseo_paqueteTimestamp = d["ultimo_paseo_paquete"]
             }
 
-            ver = '<button class="custom-button" onclick="verpaseoshistorico(\'' + uid + '\',\'' + orden + '\')">Ver mas</button>'
-            generarCortesia = '<button class="custom-button" onclick="generarCortesia(\'' + uid + '\',\'' + orden + '\')">Generar Cortesía</button>'
+            ver = '<center><button class="btn btn-info" onclick="verpaseoshistorico(\'' + uid + '\',\'' + orden + '\')">Ver mas</button></center>'
+            generarCortesia = '<center><button class="btn btn-info" onclick="generarCortesia(\'' + uid + '\',\'' + orden + '\')">Generar Cortesía</button><center>'
 
 
             var informacionUsuarios =
@@ -247,12 +256,12 @@ var UsuariosPorTimestamp = [];
 
 
     function verpaseoshistorico(uid, order_id) {
-      window.open('historial_compras_detalle.html?uid=' + uid + "&order_id=" + order_id, '_blank');
+      window.open('historial_compras_detalle.php?uid=' + uid + "&order_id=" + order_id, '_blank');
 
     }
 
     function generarCortesia(uid, order_id) {
-      window.open('pedirPaseo.html?uid='+uid + "&originalID=" + order_id,'_blank');
+      window.open('pedirPaseo.php?uid='+uid + "&originalID=" + order_id,'_blank');
     }
 
 

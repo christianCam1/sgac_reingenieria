@@ -205,7 +205,8 @@ function busca_user_ultima() {
                 perros,
                 generar_paseo,
                 '<button class="btn bg-info" onclick="ver_chat(\'' + uid + '\')">' + iconoChat + '</button>',
-                fcompras
+                fcompras,
+                '<button class="btn bg-danger" onclick="bajaUsuario(\'' + uid + '\')">' + iconoChat + '</button>'
             ]
             // Se añade la fila a la dataTable
             tabla.rows.add([informacionUsuarios]);
@@ -279,6 +280,9 @@ function verFCompras(uid) {
     window.open('comprasfinuser.php?uid=' + uid, '_blank');
 }
 
+function bajaUsuario(uid){
+    window.open('bajaUsuario.php?uid=' + uid, '_blank');
+}
 
 window.onload = busca_user_ultima();
 

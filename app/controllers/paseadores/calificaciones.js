@@ -103,19 +103,19 @@ function busca_user_ultima() {
         console.log("child_added")
 
         var d = datos.val();
-        var fechaPaseo = "Sin dato"
-        var fechaCalificacion = "Sin dato"
-        var order_id = "Sin dato"
-        var id_paseador = "Sin dato"
-        var nombre_paseador = "Sin dato"
-        var id_usuario = "Sin dato"
-        var nombre_usuario = false
-        var puntualidad = "Sin dato"
-        var vestimenta = "Sin dato"
-        var aromaterapia = "Sin dato"
-        var calificacion = "Sin dato"
-        var encuesta_contestada = "Sin dato"
-        var calificacion_promediada = "Sin dato"
+        var fechaPaseo = "Sin dato";
+        var fechaCalificacion = "Sin dato";
+        var order_id = "Sin dato";
+        var id_paseador = "Sin dato";
+        var nombre_paseador = "Sin dato";
+        var id_usuario = "Sin dato";
+        var nombre_usuario = false;
+        var puntualidad = "Sin dato";
+        var vestimenta = "Sin dato";
+        var aromaterapia = "Sin dato";
+        var calificacion = "Sin dato";
+        var encuesta_contestada = "Sin dato";
+        var calificacion_promediada = "Sin dato";
 
 
         let lang = 'es-US'

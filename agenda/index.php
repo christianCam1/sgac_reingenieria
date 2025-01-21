@@ -53,6 +53,8 @@ include('../layout/parte1.php');
                                             <th scope="col">Categoria</th>
                                             <th scope="col">Nombre Perros</th>
                                             <th scope="col">Direccion</th>
+                                            <th scope="col">Pais</th>
+                                            <th scope="col">Moneda</th>
                                             <th scope="col">Dias Eleccion</th>
                                             <th scope="col">Acciones</th>
                                             <!-- <th scope="col">Cambiar fechas</th>

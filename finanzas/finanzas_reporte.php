@@ -272,6 +272,8 @@ list-group-item {
                                             <th scope="col">Comision conekta</th>
                                             <th scope="col">IVA</th>
                                             <th scope="col">Monto Caminandog</th>
+                                            <th scope="col">Pais</th>
+                                            <th scope="col">Tipo de Moneda</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">UID</th>
                                     </thead>

@@ -89,13 +89,18 @@ function busca_paseos() {
             var duracion = tiempo;
             var catPaseo = d.categoria;
             var statusPaseo = status;
-            var nombrePerros = d.perrosNombre;
+            var nombrePerros = "Sin dato";
             var nombreUsuario = d.nombreUsuario + ' ' + d.apellidoUsuario;
             var direccionUsuario = d.direccion + '<button class="custom-button" onclick="verDireccion(\'' + d.latitud + '\',\'' + d.longitud + '\')">Ver</button>';
             var nombrePaseador = d.nombrePaseador + ' ' + d.apellidoPaseador;
             var tracking = '<center><button class="btn btn-info" onclick="mostrarTracking(\'' + d.id_usr + '\',\'' + d.order_id + '\')">Ver tracking</button></center>';
             var chatPaseo = '<center><button class="btn btn-info" onclick="mostrarChat(\'' + d.id_usr + '\',\'' + d.order_id + '\')">Ver Chat</button></center>';
             var calificarPaseo = '<center><button class="btn btn-primary" onclick="calificarPaseo(\'' + d.id_usr + '\',\'' + d.id_paseador + '\',\'' + d.order_id + '\')">Calificar</button></center>';
+
+
+            if(d.perrosNombre != undefined ){
+                perrosNombre = d.perrosNombre;
+            }
 
             var informacionPaseo = [
                 orderIDPaseo,

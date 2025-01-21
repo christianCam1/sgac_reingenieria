@@ -732,6 +732,8 @@ function busca_paseos() {
                     var catAgend = d.categoria;
                     var nombrePerros = d.perrosNombre;
                     var direccionAgend = d.direccion;
+                    var pais = "Sin dato";
+                    var moneda = "Sin dato";
                     var diasEleccAgend = procesarDiasEleccion(d.diasEleccion);
                     var acciones =
                         '<center>' +
@@ -756,6 +758,17 @@ function busca_paseos() {
                     // '<button class="btn btn-info" onclick="eliminarPaseo(\'' + d.order_id + "','" + d.diasEleccion + "','" + d.dias + '\') data-toggle="tooltip" title="Eliminar">'+btnBorrar+'</button>&nbsp&nbsp&nbsp' +
                     // '<button class="btn btn-info" onclick="verFCompras(\'' + d.id_usr + '\') data-toggle="tooltip" title="ver compras">'+btnVer+'</button>'+
                     */
+                    
+                    if (d.country != undefined) {
+
+                        pais = d.country;
+                    }
+
+                    if (d.currencyCharge != undefined) {
+
+                        moneda = d.currencyCharge;
+                    }
+            
 
                     ref2.orderByChild("uid").startAt(d.id_usr).endAt(d.id_usr + "\uf8ff").on("child_added", function (snapshotUser) {
                         var d2 = snapshotUser.val();
@@ -772,6 +785,8 @@ function busca_paseos() {
                             catAgend,
                             nombrePerros,
                             direccionAgend,
+                            pais,
+                            moneda,
                             diasEleccAgend,
                             acciones
                         ];
@@ -3465,6 +3480,7 @@ function agenda(id_paseador, orderID) {
         var perrosNombre = snap.val().perrosNombre;
         var fee = snap.val().fee;
         var descripcion = snap.val().descripcion;
+        var currencyCharge = snap.val().currencyCharge;        
 
 
         var nuevoAmount = (amount / dias);
@@ -3489,7 +3505,7 @@ function agenda(id_paseador, orderID) {
 
 
 
-            obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion);
+            obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion, currencyCharge);
 
 
 
@@ -3502,7 +3518,7 @@ function agenda(id_paseador, orderID) {
 
 
 
-function obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion) {
+function obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion, currencyCharge) {
 
 
     console.log("Entra a obtener perros")
@@ -3566,7 +3582,7 @@ function obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiemp
                     // console.log(myJsonString)
 
                     console.log("Termina con los perros")
-                    datos_paseador(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion, myJsonString)
+                    datos_paseador(nuevoAmount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, nuevoMonto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderid, perrosNombre, nuevoFee, descripcion, currencyCharge, myJsonString)
 
                 }
 
@@ -3584,7 +3600,7 @@ function obtenerPerrosTotal(nuevoAmount, categoria, numero_perros, perros, tiemp
 
 
 
-function datos_paseador(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, jsonPerros) {
+function datos_paseador(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, currencyCharge, jsonPerros) {
 
     var db = firebase.database();
     var refPaseadoresfoto = db.ref("Paseadores");
@@ -3598,7 +3614,7 @@ function datos_paseador(amount, categoria, numero_perros, perros, tiempo, latitu
 
 
 
-        fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, jsonPerros)
+        fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, currencyCharge, jsonPerros)
 
 
 
@@ -3610,7 +3626,7 @@ function datos_paseador(amount, categoria, numero_perros, perros, tiempo, latitu
 
 
 
-function fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, jsonPerros) {
+function fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, currencyCharge, jsonPerros) {
 
 
     var db = firebase.database();
@@ -3629,7 +3645,7 @@ function fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, la
 
 
 
-        guardar_agendados(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, ultimo_time, jsonPerros)
+        guardar_agendados(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, currencyCharge, ultimo_time, jsonPerros)
 
 
 
@@ -3639,7 +3655,7 @@ function fecha_ultimo_paseo(amount, categoria, numero_perros, perros, tiempo, la
 
 }
 
-function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, timestamp_ultimo_paseo, jsonPerros) {
+function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, latitud, longitud, direccion, monto_paseador, dias, diasEleccion, op_date, orderid, nombreuser, apuser, numero_usuario, uid, id_paseador, fotopaseador, nombrepaseador, numero_paseador, orderIDborrar, perrosNombre, nuevoFee, descripcion, currencyCharge, timestamp_ultimo_paseo, jsonPerros) {
     //Definicion de variables para realizar conexion a la BD de firebase
     var db = firebase.database();
     var ref_agendaguarda = db.ref("Agendados");
@@ -3722,7 +3738,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                     order_id: nuevaOrden,
                     uid: uid,
                     ultimo_time: datumFirebase,
-                    nombre: nombreuser + " " + apuser
+                    nombre: nombreuser + " " + apuser,
+                    currencyCharge: currencyCharge
 
                 });
 
@@ -3735,7 +3752,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
 
             paseospasref.set({
 
-                categoria: categoria,
+                categoria: categoria,                
+                currencyCharge: currencyCharge,
                 num_perros: numero_perros,
                 tiempo_paseo: tiempo,
                 operation_date: nuevaFecha, //Mantener valor en el formato anterior
@@ -3777,7 +3795,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                 direccion: nuevaDireccion,
                 order_id: nuevaOrden,
                 operation_date: nuevaFecha,
-                amount: amount,
+                amount: amount,                
+                currencyCharge: currencyCharge,
                 numero_usuario: numero_usuario,
                 numero_paseador: numero_paseador,
                 timestamp: datumFirebase,
@@ -3804,7 +3823,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                 tiempo_paseo: tiempo,
                 operation_date: nuevaFecha,
                 order_id: nuevaOrden,
-                uid: uid,
+                uid: uid,                
+                currencyCharge: currencyCharge,
                 nombre: nombreuser + " " + apuser,
                 estatus: "agendado",
                 timestamp: datumFirebase,
@@ -3821,7 +3841,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                 num_perros: numero_perros,
                 tiempo_paseo: tiempo,
                 operation_date: nuevaFecha,
-                order_id: nuevaOrden,
+                order_id: nuevaOrden,                
+                currencyCharge: currencyCharge,
                 perros: perros,
                 foto_paseador: fotopaseador,
                 nombre_paseador: nombrepaseador,
@@ -3905,7 +3926,8 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                         order_id: nuevaOrden,
                         uid: uid,
                         ultimo_time: datumFirebase,
-                        nombre: nombreuser + " " + apuser
+                        nombre: nombreuser + " " + apuser,
+                        currencyCharge: currencyCharge
 
                     });
 
@@ -3923,6 +3945,7 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                     tiempo_paseo: tiempo,
                     operation_date: nuevaFecha, //Mantener valor en el formato anterior
                     amount: monto_paseador * 0.60,
+                    currencyCharge: currencyCharge,
                     order_id: nuevaOrden,
                     time_op: datum,
                     descripcion: descripcion
@@ -3961,6 +3984,7 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                     order_id: nuevaOrden,
                     operation_date: nuevaFecha,
                     amount: amount,
+                    currencyCharge: currencyCharge,
                     numero_usuario: numero_usuario,
                     numero_paseador: numero_paseador,
                     timestamp: datumFirebase,
@@ -3988,10 +4012,11 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                     operation_date: nuevaFecha,
                     order_id: nuevaOrden,
                     uid: uid,
+                    currencyCharge: currencyCharge,
                     nombre: nombreuser + " " + apuser,
                     estatus: "agendado",
                     timestamp: datumFirebase,
-                    perrosNombre: perrosNombre
+                    perrosNombre: perrosNombre,
 
                 });
 
@@ -4005,6 +4030,7 @@ function guardar_agendados(amount, categoria, numero_perros, perros, tiempo, lat
                     tiempo_paseo: tiempo,
                     operation_date: nuevaFecha,
                     order_id: nuevaOrden,
+                    currencyCharge: currencyCharge,
                     perros: perros,
                     foto_paseador: fotopaseador,
                     nombre_paseador: nombrepaseador,

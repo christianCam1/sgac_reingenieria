@@ -195,7 +195,7 @@ function finalizarAtencion() {
         var db = firebase.database();
         var ref = db.ref("Chats_usuario_caminandog").child("tabla_chat").child(uid).remove().then(function () {
 
-            location.href = "chatsCaminandogTabla.html";
+            location.href = "../contactanos/iniciarChat.php";
 
         }).catch(function (error) {
 

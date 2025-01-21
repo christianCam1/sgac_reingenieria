@@ -50,7 +50,7 @@ function consulta_baja() {
           var childKey = childSnapshot.key;
           var childData = childSnapshot.val();
           //alert("El correo ingresado ya se encuentra asociado al candidato "+childData.nombre+" "+childData.apellidopa+" "+childData.apellidoma)
-          window.location.href = "bajaPaseadores.html?email="+childData.email;
+          window.location.href = "bajaPaseadores.php?email="+childData.email;
         });
       }else{
         refPaseadores.orderByChild('email').equalTo(email).once("value").then(snapshote => {

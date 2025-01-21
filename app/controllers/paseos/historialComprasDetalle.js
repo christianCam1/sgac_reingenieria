@@ -163,7 +163,7 @@ function ultimo_paseo_usuario() {
             if (d["estatusPaseo"].estatus != undefined) {
                 estatus = d["estatusPaseo"]["estatus"]
                 if (estatus == "terminado") {
-                    tracking = '<button class="custom-button" onclick="mostrarTrackingTerminado(\'' + uid + '\',\'' + orden + '\')">Ver mas</button>';
+                    tracking = '<center><button class="btn btn-info" onclick="mostrarTrackingTerminado(\'' + uid + '\',\'' + orden + '\')">Ver mas</button></center>';
                 } else {
                     tracking = d["estatusPaseo"]["estatus"]
                 }
@@ -171,7 +171,7 @@ function ultimo_paseo_usuario() {
 
             console.log(d["estatusPaseo"].estatus)
 
-            chat = '<button class="custom-button" onclick="mostrarChat(\'' + uid + '\',\'' + orden + '\')">Chat</button>';
+            chat = '<center><button class="btn btn-primary" onclick="mostrarChat(\'' + uid + '\',\'' + orden + '\')"> <i class="fa-solid fa-comment"> </i></button><center>';
 
             var informacionUsuarios =
                 [
@@ -193,12 +193,12 @@ function ultimo_paseo_usuario() {
 
             tabla.rows.add([informacionUsuarios]);
 
-            $("#loadingOverlay").hide();
+            
         }
 
         
-        tabla.draw()
-
+        tabla.draw();
+        $("#loadingOverlay").hide();
 
     });
 
@@ -213,13 +213,13 @@ window.onload = ultimo_paseo_usuario();
 
 
 function mostrarTrackingTerminado(uid, order_id) {
-    window.open('terminado.html?uid=' + uid + "&order_id=" + order_id, '_blank');
+    window.open('terminado.php?uid=' + uid + "&order_id=" + order_id, '_blank');
 
 }
 
 function mostrarChat(uid, order_id) {
 
-    window.open('chat.html?uid=' + uid + "&order_id=" + order_id, '_blank');
+    window.open('chat.php?uid=' + uid + "&order_id=" + order_id, '_blank');
 
 }
 

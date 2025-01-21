@@ -84,8 +84,8 @@ include('../layout/parte1.php');
                                         <div class="card-footer">
                                             <form action="#" method="post">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="mensaje" placeholder=""
-                                                        onkeydown="search(this)" />
+                                                    <textarea class="form-control" rows="3" id="mensaje" placeholder=""
+                                                        onkeydown="search(this)" ></textarea>
                                                     <span class="input-group-append">
                                                         <button class="custom-button2" id="siguiente"
                                                             onclick="enviarMensaje()">Enviar</button>

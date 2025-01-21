@@ -80,7 +80,7 @@ function dispersion() {
         },
         columnDefs: [
             { "targets": [0], "visible": false },
-            { "targets": [10], "visible": false }
+            { "targets": [12], "visible": false }
         ],
         pageLength: 10,
         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
@@ -140,7 +140,7 @@ function dispersion() {
 
         if (range_times == true) {
             {
-                var order = d.order_id
+                var order = d.order_id;
                 var fechaa = date.toLocaleDateString(lang, options);
                 var desc = d.descripcion;
                 var totalF = Math.round(d.amount * 100) / 100;
@@ -150,6 +150,8 @@ function dispersion() {
                 var montoCam = Math.round(d.monto_caminandog * 100) / 100;
                 var nombre = d.nombre;
                 var uid = d.uid;
+                var pais = d.country;
+                var moneda = d.currencyCharge;
 
                 var txt = d.descripcion;
                 var numb = txt.match(/\d/g);
@@ -199,6 +201,8 @@ function dispersion() {
                     comConek,
                     totalIva,
                     montoCam,
+                    pais,
+                    moneda,
                     nombre,
                     uid
                 ];
