@@ -9,7 +9,7 @@ include('../layout/parte1.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Ultimos paseos</h1>
+                    <h1 class="m-0">Historial de Compras de Paseos</h1>
 
                 </div><!-- /.col -->
             </div><!-- /.row -->

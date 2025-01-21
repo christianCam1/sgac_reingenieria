@@ -61,6 +61,7 @@ include('../layout/parte1.php');
                                             <th scope="col">Realizar venta</th>
                                             <th scope="col">Iniciar chat</th>
                                             <th scope="col">Ver compras</th>
+                                            <th scope="col">Dar de baja al usuario</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabla">

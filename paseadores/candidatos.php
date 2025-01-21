@@ -2,7 +2,12 @@
 include('../layout/parte1.php');
 
 ?>
-
+<style>
+    /* Maneja la visibilidad mediante CSS */
+    #paseosCalificar {
+        display: none;
+    }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,7 +15,7 @@ include('../layout/parte1.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Listado de candidatos</h1>
+                    <h1 class="m-0">Listado de candidatos registrados</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -26,11 +31,12 @@ include('../layout/parte1.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Candidatos registrados</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                        <button class="btn btn-success" id="paseosCompletos">Ver todos los candidatos</button>
+                        <button class="btn btn-success" id="paseosParcial" onclick="busca_user_ultima()">Volver</button>
+                            <div class="card-tools">                                
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                         class="fas fa-minus"></i>
-                                </button>
+                                </button> -->
                             </div>
 
                         </div>
@@ -41,8 +47,49 @@ include('../layout/parte1.php');
                                     <div class="text-bold pt-2">&nbsp;&nbsp;Cargando...</div>
                                 </div>
                             </div>
-                            <div class="table table-responsive">
+                            <div class="table table-responsive" id="tablaDatosTodo">
                                 <table id="tablaDatos" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">UID</th>
+                                            <th scope="col">UID (Hidden)</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Telefono</th>
+                                            <th scope="col">Fecha de reg.</th>
+                                            <th scope="col">Fecha de reg.(timestamp)</th>
+                                            <th scope="col">Dirección </th>
+                                            <th scope="col">Municipio trabajo</th>
+                                            <th scope="col">Estatus</th>
+                                            <th scope="col">Plataforma</th>
+                                            <th scope="col">Registro</th>
+                                            <th scope="col">Chat</th>
+                                        </tr>
+                                    </thead>
+                                    </thead>
+                                    <tbody id="tabla">
+                                    </tbody>
+                                    <tfoot hidden>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>UID</th>
+                                            <th>UID (Hidden)</th>
+                                            <th>Correo</th>
+                                            <th>Telefono</th>
+                                            <th>Fecha de reg</th>
+                                            <th>Fecha de reg.(timestamp)</th>
+                                            <th>Dirección</th>
+                                            <th>Municipio trabajo</th>
+                                            <th>Estatus</th>
+                                            <th>P</th>
+                                            <th>M</th>
+                                            <th>C</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="table table-responsive" id="tablaDatos2Todo">
+                                <table id="tablaDatos2" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th scope="col">Nombre</th>

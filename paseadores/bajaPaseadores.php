@@ -144,7 +144,7 @@ button.b {
                         </div><!-- /.col -->
                         <div class="card-body" style="display: block;">
                             <div class="row">
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <div class="card card-danger card-outline">
                                         <div class="card-header">
                                             <h4 class="card-title w-100">
@@ -191,7 +191,7 @@ button.b {
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
                                     <div class="card card-danger card-outline">
                                         <div class="card-header">
@@ -233,7 +233,7 @@ button.b {
                                                 </div>
                                             </div>
                                             <button type="button" class="btn btn-danger btn-lg float-right"
-                                                id="siguiente" onclick="bajaPaseador()"><i
+                                                id="siguiente" onclick="bajaUsuario()"><i
                                                     class="fa-solid fa-trash"></i> Eiminar registro
                                             </button>
                                         </div>
