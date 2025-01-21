@@ -95,13 +95,22 @@ function bajaUsuario() {
             eliminadoPor: currentEMAIL,
             timestampEliminado: firebase.database.ServerValue.TIMESTAMP
         });
-    }); 
+        agendadosModificaciones.child(key).update({
+            id_orden: uidUsuario,
+            uid: currentUID,
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+            cambio: "Eliminar usuario",
+            inicial: "Referencia en /Usuarios",
+            final: "Referencia en /Usuarios_eliminados"
+        });
+    });
 
+    // Esto vendria siendo para la cloud function aun no definida
     // var addMessage2 = firebase.functions().httpsCallable('BajaUsuario');
     // addMessage2({ uid: uidUsuario }).then(function (result) {
     //     console.log(result)
     //     alert(result.data[0])
-    //     //window.location.href = "https://sgac.caminandog.com.mx/bajaPaseadores.html?email=" + Useremail;
+    //     window.location.href = "../usuarios/";
     // });
 }
 
